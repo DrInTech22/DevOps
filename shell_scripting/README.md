@@ -21,10 +21,10 @@ Shell script is simply a list of commands to be run by the shell.
 ## Shebang
 Shebang is a special line that tells the OS which shell should be used to execute scripts. E.g
 
-'''bash
+```bash
 #!/bin/bash
 echo "hello world"
-'''
+```
 
 
 ## Assigning variables
@@ -36,9 +36,9 @@ echo "hello world"
       List="$(ls)"
 - Declaring variables in script;
 
-    '''echo $Name'''  or
+    ```echo $Name```  or
 
-    '''echo ${List}'''
+    ```echo ${List}```
 
 ## Conditionals
 Conditionals enable the execution block of commands when certain conditions are met and a different block of commands when those requirements are not.
@@ -62,8 +62,8 @@ It executes set of commands repeatedly until
 ## How to run shell scripts
 Make shell script executable, then run;
 
-'''
+```bash
 echo "ls -a" > list.sh
 chmod +x list.sh  #make script executable
 ./list.sh  #run script
-''' 
+``` 
