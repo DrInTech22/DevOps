@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: myapp
 spec:
+  replicas: 4
   selector:
     matchLabels:
       app: myapp
@@ -18,6 +19,6 @@ spec:
     spec:
       containers:
       - name: mynginxapp
-        image: nginx:latest
+        image: nginx:1.14.1
         ports:
         - containerPort: 80
