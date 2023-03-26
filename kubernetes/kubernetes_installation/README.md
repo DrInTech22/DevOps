@@ -54,7 +54,7 @@ add environment variables into .bashrc file
 export CLUSTER_NAME=maestrops.in
 export STATE_STORE=s3://maestrops.in.k8s
 ```
-save the file and running the next to command to apply changes made
+save the file and run the next command to apply changes made
 ```
 source ~/.bashrc
 ```
