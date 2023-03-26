@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: myapp
+  name: httpdapp
   labels:
     app: myapp
 spec:
   containers:
-  - name: myhttpdapp
+  - name: httpdapp
     image: httpd:latest
     ports:
       - containerPort: 80
