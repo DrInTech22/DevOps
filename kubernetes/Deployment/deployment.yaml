@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploynginx
+  name: colordeploy
 spec:
   replicas: 4
   selector:
@@ -18,7 +18,7 @@ spec:
         app: myapp
     spec:
       containers:
-      - name: nginxapp
-        image: nginx:1.14.1
+      - name: colorapp
+        image: maestrops/colorapp:1.0.0
         ports:
         - containerPort: 80
