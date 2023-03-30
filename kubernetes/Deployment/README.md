@@ -35,6 +35,11 @@ kubectl expose deployment <deployment-name> --port=<port-number> --target-port=<
 ```
 kubectl scale deployment <deployment-name> --replicas=<number-of-replicas>
 ```
+## Delete a deployment
+```
+kubectl delete deployment <deployment-name>
+```
+# Updating deployment
 ## Update a deployment
 ```
 kubectl set image deployment/<deployment-name> <container-name>=<new-image-name> --record=true
@@ -55,10 +60,6 @@ kubectl rollout pause deployment/<deployment-name>
 ## Resume a deployment
 ```
 kubectl rollout resume deployment/<deployment-name>
-```
-## Delete a deployment
-```
-kubectl delete deployment <deployment-name>
 ```
 ## apply deployment yaml file
 ```
