@@ -3,8 +3,21 @@
 
 Namespaces provide a way for teams to work independently on different projects with their own set of resources such as pods, services, deployments which are isolated from resources in other namespace.
 
-
-
+## Types of default namespaces
+- kube-system: objects created by kubernetes for system processes resides here.
+- kube-public: contains publicly acessible data e.g the output from 
+```
+kubectl get cluster-info
+```
+- kube-node-lease: contains object used to determine the availability of nodes.
+- default: contains all resources you create by default if you don't declare a namespace.
+## How to create namespaces
+## 1. Using the kubectl command
+```
+kubectl apply -f deployment.yaml --namespaces my-namespace
+```
+## 2. Declaring it in yaml file
+ 
 ## Commands 
 ## 1. Create a namespace
 ```
