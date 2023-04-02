@@ -17,6 +17,8 @@ kubectl get cluster-info
 kubectl apply -f deployment.yaml --namespaces my-namespace
 ```
 ## 2. Declaring it in yaml file
+![Screenshot (19)](https://user-images.githubusercontent.com/94924061/229329289-54856c16-95f0-46a7-9ee7-03de26ca7606.png)
+
 
 # Commands 
 ## 1. Create a namespace
