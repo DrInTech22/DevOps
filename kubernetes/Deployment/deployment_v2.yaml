@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: colordeploy
+  namespace: my-namespaces
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: myapp
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: colorapp
+        image: maestrops/colorapp:2.0.0
+        ports:
+        - containerPort: 80
