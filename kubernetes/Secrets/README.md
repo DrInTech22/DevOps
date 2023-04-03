@@ -1,0 +1,92 @@
+
+# Secrets
+Secret is an external configuration file used to store and manage sensitive information such as passwords, API keys, and certificates. They are created as kubernetes objects and store sensitive data in base64 encoded.
+
+
+
+
+
+
+## Types
+1. **Opaque Secrets(generic):** They store sensitive data, such as username and password pairs or API keys, in an encoded format.
+2. **TLS Secrets(tls):** These are used to store TLS certificates and keys, which are used to secure communication between components in the cluster.
+## How to create secrets
+1. Using kubectl command
+```bash
+kubectl create secret <type> <name> <data>
+```
+Example
+```bash
+kubectl create secret generic my-secret --from-literal=username=myuser --from-literal=password=mypass
+```
+2. Using yaml file
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+type: Opaque
+data:
+  username: dXNlcm5hbWU=
+  password: cGFzc3dvcmQ=
+```
+
+## How to apply secrets in kubernetes deployment/pods
+1. **Use ‘envFrom’ field in deployment**
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-container
+          image: my-image
+          env:
+          - name: ROOT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: username
+          - name: ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: password
+```
+2. **Use ‘volume’ field in deployment**
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  selector:
+    app: my-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-container
+          image: my-image
+          volumeMounts:
+            - name: my-secret
+              mountPath: /etc/my-secret
+              readOnly: true
+      volumes:
+        - name: my-secret
+          secret:
+            secretName: my-secret
+```
+The volumes field tells Kubernetes to mount the my-secret secret as a read-only file at /etc/my-secret in the container. The volumeMounts field tells Kubernetes to mount the my-secret volume in the container. Your application can then read the secrets from the file at /etc/my-secret.
