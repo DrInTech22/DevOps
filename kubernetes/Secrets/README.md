@@ -1,6 +1,6 @@
 
 # Secrets
-Secret is an external configuration file used to store and manage sensitive information such as passwords, API keys, and certificates. They are created as kubernetes objects and store sensitive data in base64 encoded.
+Secret is an external configuration file used to store and manage sensitive information such as passwords, API keys, and certificates. They are created as kubernetes objects and store sensitive data in base64 encoded format unlike ConfigMaps which store data in plain text format. These secrets can then be used in your containerized applications.
 
 
 
@@ -32,7 +32,7 @@ data:
 ```
 
 ## How to apply secrets in kubernetes deployment/pods
-1. **Use ‘envFrom’ field in deployment**
+1. **Using ‘env’ field in deployment**
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -62,8 +62,9 @@ spec:
                 name: mysecret
                 key: password
 ```
-2. **Use ‘volume’ field in deployment**
-```yaml
+2. ## Which is better? 'env' field or 'volume' field?
+- The 'env' field is used for data configurations that won't be constantly changed because environment variables in containers cannot be changed.
+- The 'volume' field is best used for ever-changing data configurations. It also works well for passing a larger amount of configuration data.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -90,3 +91,7 @@ spec:
             secretName: my-secret
 ```
 The volumes field tells Kubernetes to mount the my-secret secret as a read-only file at /etc/my-secret in the container. The volumeMounts field tells Kubernetes to mount the my-secret volume in the container. Your application can then read the secrets from the file at /etc/my-secret.
+
+## Which is better? 'env' field or 'volume' field?
+- The 'env' field is used for data configurations that won't be constantly changed because environment variables in containers cannot be changed.
+- The 'volume' field is best used for ever-changing data configurations. It also works well for passing a larger amount of configuration data.
