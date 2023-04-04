@@ -36,10 +36,13 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: my-config
+  name: mosquitto-config-file
 data:
-  settings.conf: |-
-    <contents of settings.conf>
+  settings.conf: |
+    log_dest stdout
+    log_type all
+    log_timestamp true
+    listener 9001
 ```
 
 
