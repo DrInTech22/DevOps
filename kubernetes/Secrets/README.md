@@ -20,6 +20,7 @@ Example
 kubectl create secret generic my-secret --from-literal=username=myuser --from-literal=password=mypass
 ```
 2. Using yaml file
+- create secret with key-value pairs
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -29,6 +30,17 @@ type: Opaque
 data:
   username: dXNlcm5hbWU=
   password: cGFzc3dvcmQ=
+```
+- create secret in a file
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+type: Opaque
+data:
+  secret.file: |
+    c29tZXN1cGVyc2VjcmV0IGZpbGUgY29udGVudHMgbm9ib2R5IHNob3VsZCBzZWU=
 ```
 
 ## How to apply secrets in kubernetes deployment/pods
