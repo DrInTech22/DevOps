@@ -36,7 +36,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mosquitto-config-file
+  name: my-config
 data:
   settings.conf: |
     log_dest stdout
