@@ -21,6 +21,7 @@ kubectl create configmap my-config --from-literal=key1=value1 --from-literal=key
 kubectl create configmap my-config --from-file=path/to/file
 ```
 2. Using yaml file
+- using key-value pairs
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -29,6 +30,16 @@ metadata:
 data:
   key1: value1
   key2: value2
+```
+- create a configmap from a file
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+  settings.conf: |-
+    <contents of settings.conf>
 ```
 
 
