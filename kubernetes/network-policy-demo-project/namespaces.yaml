@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: color-space
+  
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-space
+  
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: httpd-space
+  
+
+
