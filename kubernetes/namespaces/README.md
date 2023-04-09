@@ -17,6 +17,7 @@ kubectl get cluster-info
 kubectl create namespace <namespace-name>
 ```
 ## 2. Using declarative yaml file
+- [Click me](namespace.yaml)
 
 # How to create resources under namespaces
 ## 1. Using the kubectl command
