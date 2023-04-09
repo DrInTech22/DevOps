@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: network-policy
+  name: networkpolicy
   namespace: color-space
 spec:
   podSelector:
@@ -11,7 +11,10 @@ spec:
     - Ingress
   ingress:
     - from:
-        - namespaceSelector:
-            matchLabels:
-              name: nginx-space
+      - namespaceSelector:
+          matchLabels:
+            role: nginx
+
+
+
       

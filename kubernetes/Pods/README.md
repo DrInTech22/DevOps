@@ -53,3 +53,7 @@ kubectl label pod <pod-name> <label-key>=<label-value>
 ```
 kubectl attach <pod-name>
 ```
+## 12. Run containerized application in a pod
+```
+kubectl run <pod-name> --image=<image-name>
+```
