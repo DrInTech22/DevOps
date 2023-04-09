@@ -11,10 +11,17 @@ kubectl get cluster-info
 ```
 - kube-node-lease: contains object used to determine the availability of nodes.
 - default: contains all resources you create by default if you don't declare a namespace.
-# How to create namespaces
+# How to create namespace
+## 1. Using the kubectl command
+```yaml
+kubectl create namespace <namespace-name>
+```
+## 2. Using declarative yaml file
+
+# How to create resources under namespaces
 ## 1. Using the kubectl command
 ```
-kubectl apply -f deployment.yaml --namespaces my-namespace
+kubectl apply -f deployment.yaml --namespace my-namespace
 ```
 ## 2. Declaring it in yaml file
 ![Screenshot (19)](https://user-images.githubusercontent.com/94924061/229329289-54856c16-95f0-46a7-9ee7-03de26ca7606.png)
@@ -32,6 +39,10 @@ kubectl describe namespace <namespace-name>
 ## 3. View all namespaces
 ```
 kubectl get namespaces
+```
+The below command show namespaces with their default labels
+```
+kubectl get namespaces --show-labels
 ```
 ## 4. View resources in a specific namespace
 ```bash
