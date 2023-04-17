@@ -21,7 +21,7 @@ spec:
   accessModes:
     - ReadWriteMany
   local:
-    path: /storage/data
+    path: /tmp
   nodeAffinity:
     required:
       nodeSelectorTerms:
